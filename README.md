@@ -1,6 +1,89 @@
 # Workspace IDE
 
-A modern, flexible workspace IDE built with React + TypeScript. Provides a complete development environment with resizable panes, tabbed editors, file management, and integrated tools.
+> A modern, flexible browser-based IDE built with React + TypeScript. Provides a complete development environment with resizable panes, tabbed editors, file management, and integrated tools.
+
+---
+
+## Table of Contents
+
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Architecture](#architecture)
+- [Keyboard Shortcuts](#keyboard-shortcuts)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+---
+
+## Description
+
+Workspace IDE is a browser-based Integrated Development Environment that provides a multi-window, multi-pane workspace for software development. It enables users to manage files, execute code, view live previews, and monitor real-time resource telemetry -- all within a single browser tab.
+
+Key highlights:
+
+- **Multi-window support** with resizable, split, and floating panes
+- **Tabbed interface** for editors, terminals, previews, and more
+- **File tree** with full CRUD operations and context menus
+- **Integrated tools** including code editor, shell, console, AI agent, and secrets manager
+- **Real-time resource monitoring** for RAM, CPU, and storage
+- **Global search** with keyboard navigation (Ctrl+K)
+- **Spotlight page** for project metadata and sharing
+
+---
+
+## Installation
+
+1. **Clone the repository**
+   ```sh
+   git clone https://github.com/ATC-O48/Claude-OpenAI-Code.git
+   cd Claude-OpenAI-Code
+   ```
+
+2. **Install dependencies**
+   ```sh
+   npm install
+   ```
+
+3. **Start the development server**
+   ```sh
+   npm run dev
+   ```
+
+---
+
+## Usage
+
+### Development
+
+```sh
+# Start development server
+npm run dev
+
+# Build for production
+tsc -b && npm run build
+
+# Preview production build
+npm run preview
+
+# Run linter
+npm run lint
+```
+
+### Working with the IDE
+
+- Open the app in your browser after starting the dev server
+- Use the **File Tree** sidebar to browse and manage project files
+- Split panes horizontally or vertically via the **Options Menu** (three dots icon)
+- Access tools quickly from the **Tools Dock** at the bottom
+- Use **Ctrl+K** to open global search
+- Click the project name to open the **Spotlight Page** for project settings
+
+---
 
 ## Features
 
@@ -22,7 +105,7 @@ A modern, flexible workspace IDE built with React + TypeScript. Provides a compl
 
 ### 4. Run Button
 - Start/stop the current workflow
-- Visual state change (green Run → red Stop)
+- Visual state change (green Run / red Stop)
 - Controls the Preview and Console output
 
 ### 5. Spotlight Page
@@ -49,6 +132,7 @@ A modern, flexible workspace IDE built with React + TypeScript. Provides a compl
 - Located at the bottom of the sidebar
 
 ### 9. Integrated Tools
+
 | Tool | Description |
 |------|-------------|
 | **Editor** | Code viewer with line numbers and syntax display |
@@ -61,6 +145,8 @@ A modern, flexible workspace IDE built with React + TypeScript. Provides a compl
 | **User Settings** | Configure editor and appearance preferences |
 | **AI Agent** | Chat-based AI coding assistant |
 
+---
+
 ## Tech Stack
 
 - **React 19** + **TypeScript**
@@ -70,21 +156,7 @@ A modern, flexible workspace IDE built with React + TypeScript. Provides a compl
 - **Tailwind CSS v4** for styling
 - **Lucide React** for icons
 
-## Getting Started
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
+---
 
 ## Project Structure
 
@@ -127,12 +199,7 @@ src/
         └── AgentTool.tsx            # AI agent chat
 ```
 
-## Keyboard Shortcuts
-
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+K` | Open search |
-| `Escape` | Close search/spotlight/menus |
+---
 
 ## Architecture
 
@@ -157,6 +224,53 @@ State is managed centrally via Zustand store with actions for:
 - File tree operations (CRUD + expand/collapse)
 - Application state (running, search, spotlight)
 
+---
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl+K` | Open search |
+| `Escape` | Close search/spotlight/menus |
+
+---
+
+## Contributing
+
+Contributions are welcome! Please follow these guidelines:
+
+1. **Fork the repository**
+2. **Create a new branch**
+   ```sh
+   git checkout -b feature/your-feature-name
+   ```
+3. **Make your changes**
+4. **Test your changes**
+   ```sh
+   npm run lint
+   npm run build
+   ```
+5. **Commit and push**
+   ```sh
+   git commit -m "Add feature: your-feature-name"
+   git push origin feature/your-feature-name
+   ```
+6. **Open a pull request**
+
+**Issues & Suggestions:**
+Open an issue for bugs, questions, or feature requests using the provided issue templates.
+
+---
+
 ## License
 
-MIT
+This project is licensed under the [Boost Software License 1.0](LICENSE).
+
+---
+
+## Contact
+
+- **Organization:** [ATC-O48](https://github.com/ATC-O48)
+- **Project Link:** https://github.com/ATC-O48/Claude-OpenAI-Code
+
+---
