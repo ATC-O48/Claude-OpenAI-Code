@@ -4,6 +4,8 @@ import {
   Separator,
 } from 'react-resizable-panels';
 import type { Pane, PaneSplit } from '../../types/workspace';
+import { useWorkspaceStore } from '../../stores/workspaceStore';
+import { collectPanes } from '../../layouts/kittyLayouts';
 import { PaneView } from './PaneView';
 
 function isPaneSplit(layout: Pane | PaneSplit): layout is PaneSplit {
@@ -51,14 +53,65 @@ function LayoutRenderer({ layout }: LayoutRendererProps) {
   );
 }
 
+interface StackLayoutRendererProps {
+  layout: Pane | PaneSplit;
+}
+
+function StackLayoutRenderer({ layout }: StackLayoutRendererProps) {
+  const { activePaneIndex, setActivePaneIndex } = useWorkspaceStore();
+  const panes = collectPanes(layout);
+
+  if (panes.length === 0) {
+    return (
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
+        No panes open
+      </div>
+    );
+  }
+
+  const safeIndex = Math.min(activePaneIndex, panes.length - 1);
+  const activePane = panes[safeIndex];
+
+  return (
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+      {panes.length > 1 && (
+        <div className="stack-pane-tabs">
+          {panes.map((pane, index) => {
+            const label = pane.tabs[0]?.title ?? `Pane ${index + 1}`;
+            return (
+              <button
+                key={pane.id}
+                className={`stack-pane-tab ${index === safeIndex ? 'active' : ''}`}
+                onClick={() => setActivePaneIndex(index)}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+      )}
+      <div style={{ flex: 1, overflow: 'hidden' }}>
+        <PaneView pane={activePane} />
+      </div>
+    </div>
+  );
+}
+
 interface WorkspaceLayoutProps {
   layout: Pane | PaneSplit;
 }
 
 export function WorkspaceLayout({ layout }: WorkspaceLayoutProps) {
+  const { kittyLayout } = useWorkspaceStore();
+  const isStack = kittyLayout.type === 'stack';
+
   return (
     <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-      <LayoutRenderer layout={layout} />
+      {isStack ? (
+        <StackLayoutRenderer layout={layout} />
+      ) : (
+        <LayoutRenderer layout={layout} />
+      )}
     </div>
   );
 }
