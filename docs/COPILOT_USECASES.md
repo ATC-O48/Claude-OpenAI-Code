@@ -27,9 +27,9 @@
 |----------|---------|
 | Tổng số use cases | 34 |
 | Nhóm kỹ năng | 7 |
-| Mức độ Đơn giản | 14 |
-| Mức độ Trung cấp | 14 |
-| Mức độ Trình độ cao | 6 |
+| Mức độ Đơn giản | 15 |
+| Mức độ Trung cấp | 15 |
+| Mức độ Trình độ cao | 4 |
 
 ---
 
@@ -352,7 +352,7 @@ Nhóm kỹ năng tập trung vào việc tìm và khắc phục các lỗ hổng
 
 ## Phân loại theo mức độ
 
-### Đơn giản (14 use cases)
+### Đơn giản (15 use cases)
 
 Phù hợp cho người mới bắt đầu sử dụng Copilot Chat.
 
@@ -374,7 +374,7 @@ Phù hợp cho người mới bắt đầu sử dụng Copilot Chat.
 | 32 | Bảo mật kho lưu trữ (Secure Repository) | Phân tích an ninh |
 | 33 | Quản lý phụ thuộc (Manage Dependencies) | Phân tích an ninh |
 
-### Trung cấp (14 use cases)
+### Trung cấp (15 use cases)
 
 Yêu cầu hiểu biết về cấu trúc dự án và patterns.
 
@@ -396,7 +396,7 @@ Yêu cầu hiểu biết về cấu trúc dự án và patterns.
 | 31 | Cập nhật bài kiểm thử (Update Unit Tests) | Kiểm thử mã |
 | 34 | Tìm lỗ hổng bảo mật (Find Security Vulnerabilities) | Phân tích an ninh |
 
-### Trình độ cao (6 use cases)
+### Trình độ cao (4 use cases)
 
 Yêu cầu kiến thức sâu về architecture và system design.
 
@@ -459,9 +459,9 @@ mindmap
 
 ```mermaid
 pie title Phân bố theo mức độ
-    "Đơn giản" : 14
-    "Trung cấp" : 14
-    "Trình độ cao" : 6
+    "Đơn giản" : 15
+    "Trung cấp" : 15
+    "Trình độ cao" : 4
 ```
 
 ```mermaid
