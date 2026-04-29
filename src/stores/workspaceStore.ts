@@ -117,7 +117,7 @@ interface WorkspaceState {
   searchQuery: string;
   searchOpen: boolean;
   spotlightOpen: boolean;
-  secrets: { key: string; name: string; masked: boolean }[];
+  secrets: { key: string; name: string; value?: string; masked: boolean }[];
 
   addWindow: () => void;
   removeWindow: (id: string) => void;
@@ -186,6 +186,19 @@ function updateFileNodes(
       return node;
     })
     .filter(Boolean) as FileNode[];
+}
+
+function updateChildrenPaths(children: FileNode[], oldPath: string, newPath: string): FileNode[] {
+  return children.map((child) => {
+    const updatedChild: FileNode = {
+      ...child,
+      path: child.path.replace(oldPath, newPath),
+    };
+    if (updatedChild.children) {
+      updatedChild.children = updateChildrenPaths(updatedChild.children, oldPath, newPath);
+    }
+    return updatedChild;
+  });
 }
 
 function addChildToFolder(
@@ -447,11 +460,19 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
 
   renameFile: (nodeId, newName) =>
     set((s) => ({
-      files: updateFileNodes(s.files, nodeId, (node) => ({
-        ...node,
-        name: newName,
-        path: node.path.replace(/[^/]+$/, newName),
-      })),
+      files: updateFileNodes(s.files, nodeId, (node) => {
+        const oldPath = node.path;
+        const newPath = oldPath.replace(/[^/]+$/, newName);
+        const updated: FileNode = {
+          ...node,
+          name: newName,
+          path: newPath,
+        };
+        if (updated.children) {
+          updated.children = updateChildrenPaths(updated.children, oldPath, newPath);
+        }
+        return updated;
+      }),
     })),
 
   deleteFile: (nodeId) =>
@@ -471,6 +492,9 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
         name: dupName,
         path: `${parentPath}/${dupName}`,
       };
+      if (!parentPath) {
+        return { files: [...s.files, newNode] };
+      }
       return { files: addChildToFolder(s.files, parentPath, newNode) };
     }),
 
@@ -483,9 +507,9 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
   updateSpotlight: (config) =>
     set((s) => ({ spotlight: { ...s.spotlight, ...config } })),
 
-  addSecret: (name) =>
+  addSecret: (name, value) =>
     set((s) => ({
-      secrets: [...s.secrets, { key: genId('secret'), name, masked: true }],
+      secrets: [...s.secrets, { key: genId('secret'), name, value, masked: true }],
     })),
 
   removeSecret: (key) =>
