@@ -15,6 +15,7 @@ export default function App() {
     searchOpen,
     spotlightOpen,
     setSearchOpen,
+    cycleLayout,
   } = useWorkspaceStore();
 
   const activeWindow = windows.find((w) => w.id === activeWindowId);
@@ -25,10 +26,14 @@ export default function App() {
         e.preventDefault();
         setSearchOpen(true);
       }
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === 'L') {
+        e.preventDefault();
+        cycleLayout();
+      }
     };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
-  }, [setSearchOpen]);
+  }, [setSearchOpen, cycleLayout]);
 
   return (
     <div className="workspace-layout">

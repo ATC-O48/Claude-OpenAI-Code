@@ -1,5 +1,6 @@
 import { Plus, X, Search, Play, Square } from 'lucide-react';
 import { useWorkspaceStore } from '../../stores/workspaceStore';
+import { LayoutSelector } from './LayoutSelector';
 
 export function TopBar() {
   const {
@@ -39,6 +40,8 @@ export function TopBar() {
           <Plus size={16} />
         </button>
       </div>
+
+      <LayoutSelector />
 
       <button
         className="btn-icon"

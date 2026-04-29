@@ -77,3 +77,40 @@ export interface SpotlightConfig {
   isPublic: boolean;
   shareLink?: string;
 }
+
+export type KittyLayoutType =
+  | 'stack'
+  | 'tall'
+  | 'fat'
+  | 'grid'
+  | 'splits'
+  | 'horizontal'
+  | 'vertical';
+
+export interface KittyLayoutConfig {
+  type: KittyLayoutType;
+  bias: number;
+  fullSize: number;
+  mirrored: boolean;
+  splitAxis: 'horizontal' | 'vertical' | 'auto';
+}
+
+export const KITTY_LAYOUT_LABELS: Record<KittyLayoutType, string> = {
+  stack: 'Stack',
+  tall: 'Tall',
+  fat: 'Fat',
+  grid: 'Grid',
+  splits: 'Splits',
+  horizontal: 'Horizontal',
+  vertical: 'Vertical',
+};
+
+export const KITTY_LAYOUT_ORDER: KittyLayoutType[] = [
+  'stack',
+  'tall',
+  'fat',
+  'grid',
+  'splits',
+  'horizontal',
+  'vertical',
+];

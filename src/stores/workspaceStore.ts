@@ -9,7 +9,11 @@ import type {
   SpotlightConfig,
   SplitDirection,
   PaneSplit,
+  KittyLayoutType,
+  KittyLayoutConfig,
 } from '../types/workspace';
+import { KITTY_LAYOUT_ORDER } from '../types/workspace';
+import { applyKittyLayout, getDefaultLayoutConfig } from '../layouts/kittyLayouts';
 
 let idCounter = 0;
 const genId = (prefix: string) => `${prefix}-${++idCounter}`;
@@ -118,6 +122,14 @@ interface WorkspaceState {
   searchOpen: boolean;
   spotlightOpen: boolean;
   secrets: { key: string; name: string; value?: string; masked: boolean }[];
+  kittyLayout: KittyLayoutConfig;
+  enabledLayouts: KittyLayoutType[];
+  activePaneIndex: number;
+
+  setKittyLayout: (type: KittyLayoutType) => void;
+  updateKittyLayoutConfig: (config: Partial<KittyLayoutConfig>) => void;
+  cycleLayout: () => void;
+  setActivePaneIndex: (index: number) => void;
 
   addWindow: () => void;
   removeWindow: (id: string) => void;
@@ -288,6 +300,48 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
     { key: 's1', name: 'OPENAI_API_KEY', masked: true },
     { key: 's2', name: 'DATABASE_URL', masked: true },
   ],
+  kittyLayout: getDefaultLayoutConfig(),
+  enabledLayouts: KITTY_LAYOUT_ORDER,
+  activePaneIndex: 0,
+
+  setKittyLayout: (type) => {
+    set((s) => {
+      const newConfig: KittyLayoutConfig = { ...s.kittyLayout, type };
+      const win = s.windows.find((w) => w.isActive);
+      if (!win) return { kittyLayout: newConfig };
+      const newLayout = applyKittyLayout(win.layout, newConfig);
+      return {
+        kittyLayout: newConfig,
+        windows: s.windows.map((w) =>
+          w.isActive ? { ...w, layout: newLayout } : w,
+        ),
+      };
+    });
+  },
+
+  updateKittyLayoutConfig: (config) => {
+    set((s) => {
+      const newConfig: KittyLayoutConfig = { ...s.kittyLayout, ...config };
+      const win = s.windows.find((w) => w.isActive);
+      if (!win) return { kittyLayout: newConfig };
+      const newLayout = applyKittyLayout(win.layout, newConfig);
+      return {
+        kittyLayout: newConfig,
+        windows: s.windows.map((w) =>
+          w.isActive ? { ...w, layout: newLayout } : w,
+        ),
+      };
+    });
+  },
+
+  cycleLayout: () => {
+    const state = get();
+    const currentIndex = state.enabledLayouts.indexOf(state.kittyLayout.type);
+    const nextIndex = (currentIndex + 1) % state.enabledLayouts.length;
+    state.setKittyLayout(state.enabledLayouts[nextIndex]);
+  },
+
+  setActivePaneIndex: (index) => set({ activePaneIndex: index }),
 
   addWindow: () => {
     const tab = createTab('editor', 'Untitled');
