@@ -192,13 +192,27 @@ function updateChildrenPaths(children: FileNode[], oldPath: string, newPath: str
   return children.map((child) => {
     const updatedChild: FileNode = {
       ...child,
-      path: child.path.replace(oldPath, newPath),
+      path: child.path.startsWith(oldPath) ? newPath + child.path.slice(oldPath.length) : child.path,
     };
     if (updatedChild.children) {
       updatedChild.children = updateChildrenPaths(updatedChild.children, oldPath, newPath);
     }
     return updatedChild;
   });
+}
+
+function deepCloneFileNode(node: FileNode, newParentPath: string): FileNode {
+  const cloned: FileNode = {
+    ...node,
+    id: genId('file'),
+    path: `${newParentPath}/${node.name}`,
+  };
+  if (node.children) {
+    cloned.children = node.children.map((child) =>
+      deepCloneFileNode(child, cloned.path)
+    );
+  }
+  return cloned;
 }
 
 function addChildToFolder(
@@ -492,6 +506,11 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
         name: dupName,
         path: `${parentPath}/${dupName}`,
       };
+      if (node.children) {
+        newNode.children = node.children.map((child) =>
+          deepCloneFileNode(child, newNode.path)
+        );
+      }
       if (!parentPath) {
         return { files: [...s.files, newNode] };
       }
