@@ -16,8 +16,19 @@ name: Run Datadog Synthetic tests
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - '.github/**'
+      - '!.github/workflows/datadog-synthetics.yml'
   pull_request:
     branches: [ "main" ]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - '.github/**'
+      - '!.github/workflows/datadog-synthetics.yml'
+  workflow_dispatch:
 
 jobs:
   build:
