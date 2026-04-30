@@ -1,137 +1,68 @@
+<div align="center">
+
 # Workspace IDE
 
-> A modern, flexible browser-based IDE built with React + TypeScript. Provides a complete development environment with resizable panes, tabbed editors, file management, and integrated tools.
+**A modern, flexible browser-based IDE built with React + TypeScript**
+
+[![Build Status](https://github.com/ATC-O48/Claude-OpenAI-Code/actions/workflows/ci.yml/badge.svg)](https://github.com/ATC-O48/Claude-OpenAI-Code/actions/workflows/ci.yml)
+[![License: BSL-1.0](https://img.shields.io/badge/License-BSL--1.0-blue.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+
+A complete development environment in your browser — multi-window workspace with resizable panes, tabbed editors, file management, and integrated tools.
+
+[Getting Started](#-getting-started) · [Features](#-features) · [Documentation](docs/) · [Contributing](CONTRIBUTING.md)
+
+</div>
 
 ---
 
-## Table of Contents
+## Screenshots
 
-- [Description](#description)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Architecture](#architecture)
-- [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
----
-
-## Description
-
-Workspace IDE is a browser-based Integrated Development Environment that provides a multi-window, multi-pane workspace for software development. It enables users to manage files, execute code, view live previews, and monitor real-time resource telemetry -- all within a single browser tab.
-
-Key highlights:
-
-- **Multi-window support** with resizable, split, and floating panes
-- **Tabbed interface** for editors, terminals, previews, and more
-- **File tree** with full CRUD operations and context menus
-- **Integrated tools** including code editor, shell, console, AI agent, and secrets manager
-- **Real-time resource monitoring** for RAM, CPU, and storage
-- **Global search** with keyboard navigation (Ctrl+K)
-- **Spotlight page** for project metadata and sharing
-
----
-
-## Installation
-
-1. **Clone the repository**
-   ```sh
-   git clone https://github.com/ATC-O48/Claude-OpenAI-Code.git
-   cd Claude-OpenAI-Code
-   ```
-
-2. **Install dependencies**
-   ```sh
-   npm install
-   ```
-
-3. **Start the development server**
-   ```sh
-   npm run dev
-   ```
-
----
-
-## Usage
-
-### Development
-
-```sh
-# Start development server
-npm run dev
-
-# Build for production
-tsc -b && npm run build
-
-# Preview production build
-npm run preview
-
-# Run linter
-npm run lint
-```
-
-### Working with the IDE
-
-- Open the app in your browser after starting the dev server
-- Use the **File Tree** sidebar to browse and manage project files
-- Split panes horizontally or vertically via the **Options Menu** (three dots icon)
-- Access tools quickly from the **Tools Dock** at the bottom
-- Use **Ctrl+K** to open global search
-- Click the project name to open the **Spotlight Page** for project settings
+<!-- Replace with actual screenshots -->
+> _Screenshots coming soon — run `npm run dev` to see the IDE in action._
 
 ---
 
 ## Features
 
-### 1. Workspace Structure
-- **Windows**: Multiple browser tabs/windows support
-- **Panes**: Split horizontal/vertical, resize, drag-and-drop, floating mode
-- **Tabs**: Each tab hosts a tool (Editor, Preview, Console, Agent, etc.)
+<table>
+  <tr>
+    <td><b>Multi-Window Workspace</b></td>
+    <td>Multiple browser windows with resizable, split, and floating panes</td>
+  </tr>
+  <tr>
+    <td><b>Tabbed Interface</b></td>
+    <td>Each pane hosts tabs for editors, terminals, previews, and more</td>
+  </tr>
+  <tr>
+    <td><b>File Tree</b></td>
+    <td>Full CRUD operations with context menus, drag-and-drop support</td>
+  </tr>
+  <tr>
+    <td><b>Integrated Tools</b></td>
+    <td>Code editor, shell, console, AI agent, secrets manager, and more</td>
+  </tr>
+  <tr>
+    <td><b>Resource Monitoring</b></td>
+    <td>Real-time RAM, CPU, and storage usage with color-coded indicators</td>
+  </tr>
+  <tr>
+    <td><b>Global Search</b></td>
+    <td>Keyboard-driven search (<kbd>Ctrl+K</kbd>) across files, content, and tools</td>
+  </tr>
+  <tr>
+    <td><b>Layout System</b></td>
+    <td>7 kitty-inspired layouts — Stack, Tall, Fat, Grid, Splits, Horizontal, Vertical</td>
+  </tr>
+  <tr>
+    <td><b>Spotlight Page</b></td>
+    <td>Project metadata, visibility settings, and share link management</td>
+  </tr>
+</table>
 
-### 2. File Tree
-- Browse and manage project files and folders
-- Open files in the editor
-- Context menu: rename, duplicate, move, download, delete
-- Create new files and folders
-
-### 3. Tools Dock
-- Quick-access toolbar at the bottom of the workspace
-- Open any tool with one click
-- Categories: primary tools, secondary tools, and "All Tools" browser
-
-### 4. Run Button
-- Start/stop the current workflow
-- Visual state change (green Run / red Stop)
-- Controls the Preview and Console output
-
-### 5. Spotlight Page
-- View and edit the project cover page
-- Set project name, description, and visibility (public/private)
-- Share link management
-- Accessible by clicking the project name
-
-### 6. Options Menu
-- Per-pane context menu (three dots icon)
-- **Window management**: Open new workspace windows
-- **Pane management**: Split, maximize, float/dock panes
-- **Tab management**: Move tabs between panes
-
-### 7. Search Bar
-- Global search modal (Ctrl+K)
-- Search across files, text content, and tools
-- Keyboard navigation support
-- Results categorized by type
-
-### 8. Resources Panel
-- Real-time display of RAM, CPU, and Storage usage
-- Color-coded progress bars (green/yellow/red)
-- Located at the bottom of the sidebar
-
-### 9. Integrated Tools
+### Integrated Tools
 
 | Tool | Description |
 |------|-------------|
@@ -147,14 +78,48 @@ npm run lint
 
 ---
 
+## Getting Started
+
+### Prerequisites
+
+- **Node.js** 18+ and **npm** 9+
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/ATC-O48/Claude-OpenAI-Code.git
+cd Claude-OpenAI-Code
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+### Available Scripts
+
+```bash
+npm run dev       # Start Vite dev server
+npm run build     # Type-check and build for production
+npm run preview   # Preview production build locally
+npm run lint      # Run ESLint
+```
+
+---
+
 ## Tech Stack
 
-- **React 19** + **TypeScript**
-- **Vite** for development and building
-- **Zustand** for state management
-- **react-resizable-panels** for split pane layouts
-- **Tailwind CSS v4** for styling
-- **Lucide React** for icons
+| Technology | Purpose |
+|-----------|---------|
+| [React 19](https://react.dev/) | UI framework |
+| [TypeScript](https://www.typescriptlang.org/) | Type safety |
+| [Vite](https://vitejs.dev/) | Build tool and dev server |
+| [Zustand](https://zustand-demo.pmnd.rs/) | State management |
+| [Tailwind CSS v4](https://tailwindcss.com/) | Utility-first styling |
+| [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels) | Split pane layouts |
+| [Lucide React](https://lucide.dev/) | Icon library |
 
 ---
 
@@ -203,7 +168,7 @@ src/
 
 ## Architecture
 
-The workspace follows a hierarchical structure:
+The workspace follows a recursive hierarchical structure:
 
 ```
 Workspace
@@ -217,12 +182,16 @@ Workspace
             └── Pane (Shell)
 ```
 
-State is managed centrally via Zustand store with actions for:
+State is managed centrally via **Zustand** store with actions for:
+
 - Window CRUD operations
 - Pane splitting, floating, maximizing
 - Tab adding, removing, moving between panes
 - File tree operations (CRUD + expand/collapse)
 - Application state (running, search, spotlight)
+- Layout management (7 kitty-inspired layout modes)
+
+> For detailed architecture documentation, see the [docs/](docs/) directory.
 
 ---
 
@@ -230,35 +199,56 @@ State is managed centrally via Zustand store with actions for:
 
 | Shortcut | Action |
 |----------|--------|
-| `Ctrl+K` | Open search |
-| `Escape` | Close search/spotlight/menus |
+| <kbd>Ctrl+K</kbd> | Open global search |
+| <kbd>Ctrl+Shift+L</kbd> | Cycle through layout modes |
+| <kbd>Escape</kbd> | Close search / spotlight / menus |
+
+---
+
+## Quick Links
+
+| Resource | Description |
+|----------|-------------|
+| [Documentation](docs/) | Architecture docs, design reviews, and guides |
+| [Design Review](docs/DESIGN_REVIEW.md) | Technical design review |
+| [Code Mapping](docs/COPILOT_CODE_MAPPING.md) | Codebase structure reference |
+| [Use Cases](docs/COPILOT_USECASES.md) | Feature use cases and workflows |
+| [Layout System](docs/KITTY_LAYOUTS.md) | Kitty-inspired layout documentation |
+| [Contributing](CONTRIBUTING.md) | Contribution guidelines |
+| [Security Policy](SECURITY.md) | Vulnerability reporting |
 
 ---
 
 ## Contributing
 
-Contributions are welcome! Please follow these guidelines:
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on:
 
-1. **Fork the repository**
-2. **Create a new branch**
-   ```sh
-   git checkout -b feature/your-feature-name
-   ```
-3. **Make your changes**
-4. **Test your changes**
-   ```sh
-   npm run lint
-   npm run build
-   ```
-5. **Commit and push**
-   ```sh
-   git commit -m "Add feature: your-feature-name"
-   git push origin feature/your-feature-name
-   ```
-6. **Open a pull request**
+- Development setup
+- Code style guidelines (ESLint, TypeScript)
+- Pull request process
+- Issue guidelines
 
-**Issues & Suggestions:**
-Open an issue for bugs, questions, or feature requests using the provided issue templates.
+### Quick Start for Contributors
+
+```bash
+# Fork and clone
+git clone https://github.com/<your-username>/Claude-OpenAI-Code.git
+cd Claude-OpenAI-Code
+npm install
+
+# Create a feature branch
+git checkout -b feature/your-feature-name
+
+# Make changes, then verify
+npm run lint
+npm run build
+
+# Commit and push
+git commit -m "feat: your feature description"
+git push origin feature/your-feature-name
+```
+
+Then open a pull request against `main`.
 
 ---
 
@@ -271,6 +261,6 @@ This project is licensed under the [Boost Software License 1.0](LICENSE).
 ## Contact
 
 - **Organization:** [ATC-O48](https://github.com/ATC-O48)
-- **Project Link:** https://github.com/ATC-O48/Claude-OpenAI-Code
+- **Project Link:** [github.com/ATC-O48/Claude-OpenAI-Code](https://github.com/ATC-O48/Claude-OpenAI-Code)
 
 ---

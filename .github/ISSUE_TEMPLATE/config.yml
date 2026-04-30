@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Discussions
+    url: https://github.com/ATC-O48/Claude-OpenAI-Code/discussions
+    about: Ask questions, share ideas, and connect with the community.
