@@ -2,12 +2,74 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>workspace-ide</title>
+
+    <!-- Primary Meta Tags -->
+    <title>Workspace IDE — Browser-based Development Environment</title>
+    <meta name="title" content="Workspace IDE — Browser-based Development Environment" />
+    <meta name="description" content="A modern, flexible browser-based IDE built with React and TypeScript. Multi-window workspace with resizable panes, tabbed editors, file management, and integrated development tools." />
+    <meta name="keywords" content="IDE, workspace, browser IDE, code editor, React, TypeScript, development environment, online IDE, web IDE" />
+    <meta name="author" content="ATC-O48" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.com/ATC-O48/Claude-OpenAI-Code" />
+    <meta property="og:title" content="Workspace IDE — Browser-based Development Environment" />
+    <meta property="og:description" content="A modern, flexible browser-based IDE built with React and TypeScript. Multi-window workspace with resizable panes, tabbed editors, file management, and integrated development tools." />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://github.com/ATC-O48/Claude-OpenAI-Code" />
+    <meta name="twitter:title" content="Workspace IDE — Browser-based Development Environment" />
+    <meta name="twitter:description" content="A modern, flexible browser-based IDE built with React and TypeScript. Multi-window workspace with resizable panes, tabbed editors, file management, and integrated development tools." />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Workspace IDE",
+        "description": "A modern, flexible browser-based IDE built with React and TypeScript.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "url": "https://github.com/ATC-O48/Claude-OpenAI-Code",
+        "author": {
+          "@type": "Organization",
+          "name": "ATC-O48",
+          "url": "https://github.com/ATC-O48"
+        },
+        "license": "https://opensource.org/licenses/BSL-1.0",
+        "programmingLanguage": ["TypeScript", "React"],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+
+    <!-- Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:system-ui,sans-serif;background:#0f172a;color:#e2e8f0;text-align:center;padding:2rem;">
+        <div>
+          <h1 style="font-size:1.5rem;margin-bottom:1rem;">Workspace IDE</h1>
+          <p>JavaScript is required to run this application. Please enable JavaScript in your browser settings and reload the page.</p>
+        </div>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
